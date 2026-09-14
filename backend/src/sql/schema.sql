@@ -1,9 +1,3 @@
--- Jalankan file ini di MySQL sebelum menjalankan backend.
--- Contoh: mysql -u root -p < src/sql/schema.sql
-
-CREATE DATABASE IF NOT EXISTS akapi_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE akapi_db;
-
 CREATE TABLE IF NOT EXISTS admin_users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
