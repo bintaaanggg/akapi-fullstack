@@ -4,7 +4,7 @@ export default function VisiMisi() {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 02</div>
+           
             <h2>Visi &amp; Misi</h2>
           </div>
           <p>Arah dan agenda strategis AKAPI dalam memperkuat kebijakan publik Indonesia.</p>

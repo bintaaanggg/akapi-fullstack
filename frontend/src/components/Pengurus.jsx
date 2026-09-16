@@ -96,7 +96,7 @@ export default function Pengurus({ data }) {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 03</div>
+           
             <h2>Kartu Indeks Pengurus</h2>
           </div>
           <p>Pilih laci, lalu ketuk kartu untuk membaca riwayat singkat masing-masing pengurus.</p>

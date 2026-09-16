@@ -4,7 +4,7 @@ export default function Agenda({ data }) {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 04</div>
+            
             <h2>Agenda Terdekat</h2>
           </div>
           <p>Jadwal kongres, kajian, dan pelatihan yang melibatkan anggota AKAPI.</p>

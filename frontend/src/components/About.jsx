@@ -4,7 +4,6 @@ export default function About() {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 01</div>
             <h2>Tentang AKAPI</h2>
           </div>
           <p>Wadah bagi pakar, praktisi, dan pemangku kebijakan publik di seluruh Indonesia.</p>
