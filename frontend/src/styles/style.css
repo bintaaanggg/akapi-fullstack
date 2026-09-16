@@ -26,12 +26,12 @@ h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; letter-sp
 
 /* ---- top navbar ---- */
 .topnav{ position:fixed; top:0; left:0; right:0; z-index:60; background:var(--ink); border-bottom:1px solid rgba(255,255,255,0.08); }
-.topnav-inner{ max-width:1280px; margin:0 auto; padding:0 32px; height:125px; display:flex; align-items:center; gap:40px; }
+.topnav-inner{ max-width:1280px; margin:0 auto; padding:0 24px; height:76px; display:flex; align-items:center; gap:28px; }
 .topnav-brand{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
 .topnav-mark{ width:54px; height:54px; border-radius:50%; border:2px solid var(--brass-bright); display:flex; align-items:center; justify-content:center; color:var(--brass-bright); font-family:'Fraunces',serif; font-size:22px; font-weight:600; }
 .topnav-name{ font-family:'Fraunces',serif; font-weight:600; color:var(--paper-white); font-size:26px; letter-spacing:.01em; }
-.topnav-list{ list-style:none; display:flex; gap:8px; margin:0; padding:0; flex:1; }
-.topnav-list a{ display:block; text-decoration:none; font-size:16.5px; letter-spacing:.02em; color:rgba(239,231,210,0.6); padding:14px 18px; border-radius:3px; transition:color .2s ease, background .2s ease; }
+.topnav-list{ list-style:none; display:flex; gap:4px; margin:0; padding:0; flex:1; }
+.topnav-list a{ display:block; text-decoration:none; font-size:16.5px; letter-spacing:.02em; color:rgba(239,231,210,0.6); padding:8px 12px; border-radius:3px; transition:color .2s ease, background .2s ease; }
 .topnav-list a:hover, .topnav-list a.active{ color:var(--paper-white); background:rgba(169,131,46,0.16); }
 .topnav-list a.active{ color:var(--brass-bright); }
 .topnav-toggle{ display:none; background:none; border:1px solid rgba(255,255,255,0.3); color:var(--paper-white); border-radius:3px; width:44px; height:44px; font-size:20px; cursor:pointer; margin-left:auto; }
@@ -44,7 +44,7 @@ h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; letter-sp
   .topnav-mobile.open{ display:flex; }
 }
 
-.page{ position:relative; z-index:1; padding-top:125px; }
+.page{ position:relative; z-index:1; padding-top:76px; }
 
 /* ---- hero ---- */
 .hero{ padding:88px 0 64px; border-bottom:1px solid var(--line); position:relative; overflow:hidden; }
