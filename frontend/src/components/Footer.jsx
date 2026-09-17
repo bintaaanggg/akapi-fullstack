@@ -3,7 +3,12 @@ export default function Footer({ onOpenAdmin }) {
     <footer>
       <div className="container footer-grid">
         <div>
-          <div className="footer-brand">AKAPI</div>
+          <div className="footer-brand-row">
+            <span className="footer-logo">
+              <img src="/logo-akapi.jpg" alt="Logo AKAPI" />
+            </span>
+            <div className="footer-brand">AKAPI</div>
+          </div>
           <p className="footer-tag">Asosiasi Kebijakan Publik Indonesia — mencetak analis kebijakan yang adaptif dan berbasis data sejak 2020.</p>
         </div>
         <div>
@@ -12,6 +17,7 @@ export default function Footer({ onOpenAdmin }) {
             <li><a href="#tentang">Tentang Kami</a></li>
             <li><a href="#visimisi">Visi &amp; Misi</a></li>
             <li><a href="#pengurus">Pengurus</a></li>
+            <li><a href="#pelatihan">Pelatihan</a></li>
             <li><a href="#agenda">Agenda</a></li>
           </ul>
         </div>

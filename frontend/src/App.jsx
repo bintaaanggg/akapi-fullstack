@@ -7,6 +7,7 @@ import Colophon from './components/Colophon.jsx';
 import About from './components/About.jsx';
 import VisiMisi from './components/VisiMisi.jsx';
 import Pengurus from './components/Pengurus.jsx';
+import Pelatihan from './components/Pelatihan.jsx';
 import Agenda from './components/Agenda.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
@@ -39,6 +40,7 @@ export default function App() {
         <About />
         <VisiMisi />
         <Pengurus data={pengurusData} />
+        <Pelatihan />
         <Agenda data={agendaData} />
         <Contact />
       </div>

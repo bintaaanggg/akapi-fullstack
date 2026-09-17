@@ -5,6 +5,7 @@ const LINKS = [
   { id: 'tentang', label: 'Tentang' },
   { id: 'visimisi', label: 'Visi & Misi' },
   { id: 'pengurus', label: 'Pengurus' },
+  { id: 'pelatihan', label: 'Pelatihan' },
   { id: 'agenda', label: 'Agenda' },
   { id: 'kontak', label: 'Kontak' }
 ];
@@ -28,7 +29,9 @@ export default function Nav() {
     <nav className="topnav" aria-label="Navigasi utama">
       <div className="topnav-inner">
         <div className="topnav-brand">
-          <span className="topnav-mark">A</span>
+          <span className="topnav-logo">
+            <img src="/logo-akapi.jpg" alt="Logo AKAPI" />
+          </span>
           <span className="topnav-name">AKAPI</span>
         </div>
 
