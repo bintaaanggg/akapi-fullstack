@@ -17,8 +17,8 @@ export default function Footer({ onOpenAdmin }) {
             <li><a href="#tentang">Tentang Kami</a></li>
             <li><a href="#visimisi">Visi &amp; Misi</a></li>
             <li><a href="#pengurus">Pengurus</a></li>
-            <li><a href="#pelatihan">Pelatihan</a></li>
             <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#pelatihan">Pelatihan</a></li>
           </ul>
         </div>
         <div>

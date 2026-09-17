@@ -5,8 +5,8 @@ const LINKS = [
   { id: 'tentang', label: 'Tentang' },
   { id: 'visimisi', label: 'Visi & Misi' },
   { id: 'pengurus', label: 'Pengurus' },
-  { id: 'pelatihan', label: 'Pelatihan' },
   { id: 'agenda', label: 'Agenda' },
+  { id: 'pelatihan', label: 'Pelatihan' },
   { id: 'kontak', label: 'Kontak' }
 ];
 

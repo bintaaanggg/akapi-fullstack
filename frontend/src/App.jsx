@@ -40,8 +40,8 @@ export default function App() {
         <About />
         <VisiMisi />
         <Pengurus data={pengurusData} />
-        <Pelatihan />
         <Agenda data={agendaData} />
+        <Pelatihan />
         <Contact />
       </div>
       <Footer onOpenAdmin={() => setAdminOpen(true)} />
