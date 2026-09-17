@@ -4,7 +4,6 @@ export default function Pelatihan() {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 05</div>
             <h2>Pelatihan</h2>
           </div>
           <p>Program pengembangan kapasitas dan pelatihan AKAPI bagi analis kebijakan publik.</p>

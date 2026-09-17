@@ -8,7 +8,6 @@ export default function Contact() {
       <div className="container">
         <div className="sec-head">
           <div>
-            <div className="sec-index">Bab 05</div>
             <h2>Hubungi Kami</h2>
           </div>
           <p>Untuk pertanyaan keanggotaan, kolaborasi riset, atau kerja sama kebijakan.</p>
