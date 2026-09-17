@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const LINKS = [
   { id: 'beranda', label: 'Beranda' },
   { id: 'tentang', label: 'Tentang' },
-  { id: 'visimisi', label: 'Visi & Misi' },
+  { id: 'visi', label: 'Visi & Misi' },
   { id: 'pengurus', label: 'Pengurus' },
   { id: 'agenda', label: 'Agenda' },
   { id: 'kontak', label: 'Kontak' }
