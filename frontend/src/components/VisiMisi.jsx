@@ -12,6 +12,19 @@ const TUJUAN = [
   'Mendorong integrasi tata kelola digital dan keterbukaan data yang selaras dengan agenda perlindungan data pribadi dan keamanan siber.'
 ];
 
+function NumberedList({ items }) {
+  return (
+    <ol className="num-list">
+      {items.map((text, i) => (
+        <li key={i}>
+          <span className="num-badge">{String(i + 1).padStart(2, '0')}</span>
+          <span>{text}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export default function VisiMisi() {
   return (
     <section className="sec" id="visimisi">
@@ -23,27 +36,19 @@ export default function VisiMisi() {
           <p>Arah dan agenda strategis AKAPI dalam memperkuat kebijakan publik Indonesia.</p>
         </div>
 
-        <div className="sub-label">Visi</div>
+        <div className="point-heading">Visi</div>
         <div className="visi-quote">
-          "Menjadi organisasi profesi terdepan berskala nasional dan internasional yang mampu mencetak tenaga profesional, terpercaya, unggul, dan kompeten di bidang analis kebijakan, yang adaptif terhadap transformasi digital dan berbasis data, guna memperkuat kualitas kebijakan publik Indonesia di era pemerintahan digital."
+          "Menjadi organisasi profesi terdepan berskala nasional dan internasional yang mampu mencetak tenaga profesional, terpercaya, unggul, dan kompeten di bidang analisis kebijakan, yang adaptif terhadap transformasi digital dan berbasis data, guna memperkuat kualitas kebijakan publik Indonesia di era pemerintahan digital."
         </div>
 
-        <div className="sub-label">Misi</div>
-        <div className="point-block">
-          <ul>
-            {MISI.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+        <div className="point-heading">Misi</div>
+        <NumberedList items={MISI} />
 
-        <div className="sub-label">Tujuan</div>
-        <div className="point-block">
-          <ul>
-            {TUJUAN.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
-        </div>
+        <div className="point-heading">Tujuan</div>
+        <NumberedList items={TUJUAN} />
 
-        <div className="sasaran-box">
-          <strong>Sasaran.</strong> Meningkatkan independensi dan netralitas, profesionalisme kinerja, integritas, kualitas pelayanan publik, pengawasan dan akuntabilitas — termasuk akuntabilitas digital dan transparansi anggaran berbasis dashboard publik — di lingkungan instansi pemerintah, akademisi, perusahaan, dan profesi/praktisi, guna mewujudkan tata kelola kebijakan yang inklusif, partisipatif, dan berbasis data.
+               <div className="sasaran-box">
+          <strong>Sasaran.</strong> Meningkatkan independensi dan netralitas, profesionalisme kinerja, integritas, kualitas pelayanan publik, pengawasan dan akuntabilitas — termasuk akuntabilitas digital dan transparansi anggaran berbasis dashboard.
         </div>
       </div>
     </section>
