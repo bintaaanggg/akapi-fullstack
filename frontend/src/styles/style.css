@@ -26,12 +26,12 @@ h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; letter-sp
 
 /* ---- top navbar ---- */
 .topnav{ position:fixed; top:0; left:0; right:0; z-index:60; background:var(--ink); border-bottom:1px solid rgba(255,255,255,0.08); }
-.topnav-inner{ max-width:1280px; margin:0 auto; padding:0 32px; height:125px; display:flex; align-items:center; gap:40px; }
+.topnav-inner{ max-width:1280px; margin:0 auto; padding:0 24px; height:76px; display:flex; align-items:center; gap:28px; }
 .topnav-brand{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
 .topnav-mark{ width:54px; height:54px; border-radius:50%; border:2px solid var(--brass-bright); display:flex; align-items:center; justify-content:center; color:var(--brass-bright); font-family:'Fraunces',serif; font-size:22px; font-weight:600; }
 .topnav-name{ font-family:'Fraunces',serif; font-weight:600; color:var(--paper-white); font-size:26px; letter-spacing:.01em; }
-.topnav-list{ list-style:none; display:flex; gap:8px; margin:0; padding:0; flex:1; }
-.topnav-list a{ display:block; text-decoration:none; font-size:16.5px; letter-spacing:.02em; color:rgba(239,231,210,0.6); padding:14px 18px; border-radius:3px; transition:color .2s ease, background .2s ease; }
+.topnav-list{ list-style:none; display:flex; gap:4px; margin:0; padding:0; flex:1; }
+.topnav-list a{ display:block; text-decoration:none; font-size:16.5px; letter-spacing:.02em; color:rgba(239,231,210,0.6); padding:8px 12px; border-radius:3px; transition:color .2s ease, background .2s ease; }
 .topnav-list a:hover, .topnav-list a.active{ color:var(--paper-white); background:rgba(169,131,46,0.16); }
 .topnav-list a.active{ color:var(--brass-bright); }
 .topnav-toggle{ display:none; background:none; border:1px solid rgba(255,255,255,0.3); color:var(--paper-white); border-radius:3px; width:44px; height:44px; font-size:20px; cursor:pointer; margin-left:auto; }
@@ -44,7 +44,7 @@ h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; letter-sp
   .topnav-mobile.open{ display:flex; }
 }
 
-.page{ position:relative; z-index:1; padding-top:125px; }
+.page{ position:relative; z-index:1; padding-top:76px; }
 
 /* ---- hero ---- */
 .hero{ padding:88px 0 64px; border-bottom:1px solid var(--line); position:relative; overflow:hidden; }
@@ -118,7 +118,7 @@ h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; letter-sp
 .timeline-item p{ margin:4px 0 0; color:var(--ink-soft); font-size:14.5px;}
 
 .visi-quote{ border-left:3px solid var(--brass); padding:6px 0 6px 26px; margin-bottom:52px; font-family:'Fraunces',serif; font-style:italic; font-weight:450; font-size:clamp(1.2rem,2.4vw,1.6rem); line-height:1.5; max-width:62ch; color:var(--ink); }
-.sub-label{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--brass); letter-spacing:.05em; margin:44px 0 18px; text-transform:uppercase; }
+.sub-label{ font-family:'Fraunces',serif; font-size:1.6rem; font-weight:600; color:var(--ink); margin:44px 0 16px; letter-spacing:-0.01em; }
 .sub-label:first-of-type{ margin-top:0; }
 .sasaran-box{ margin-top:36px; padding:24px 26px; background:var(--paper-white); border:1px solid var(--line); border-left:3px solid var(--cloth); font-size:14.5px; color:var(--ink-soft); line-height:1.7; }
 
@@ -239,6 +239,31 @@ footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:co
 .photo-preview{ width:56px; height:56px; border-radius:50%; background:var(--paper); border:1px solid var(--line-strong); overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--ink-soft); text-align:center; }
 .photo-preview img{ width:100%; height:100%; object-fit:cover; }
 .photo-picker input[type=file]{ font-size:12.5px; }
+
+.point-block{
+  border-left:3px solid var(--brass);
+  padding:6px 0 6px 26px;
+  margin-bottom:52px;
+  max-width:64ch;
+}
+.point-block ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.point-block li{
+  position:relative;
+  padding-left:22px;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:15.5px;
+  color:var(--ink-soft);
+  line-height:1.65;
+}
+.point-block li::before{
+  content:'';
+  position:absolute;
+  left:1px; top:6px;
+  width:9px; height:9px;
+  background:var(--brass-bright);
+  transform:rotate(45deg);
+  box-shadow:0 0 0 3px rgba(169,131,46,0.15);
+}
 
 .reveal{ opacity:1; }
 
