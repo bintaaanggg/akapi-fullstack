@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import logoAkapi from '../assets/logo-akapi.jpeg';
 
 const LINKS = [
   { id: 'beranda', label: 'Beranda' },
   { id: 'tentang', label: 'Tentang' },
-  { id: 'visi', label: 'Visi & Misi' },
+  { id: 'visimisi', label: 'Visi & Misi' },
   { id: 'pengurus', label: 'Pengurus' },
+  { id: 'pelatihan', label: 'Pelatihan' },
   { id: 'agenda', label: 'Agenda' },
   { id: 'kontak', label: 'Kontak' }
 ];
@@ -28,7 +30,7 @@ export default function Nav() {
     <nav className="topnav" aria-label="Navigasi utama">
       <div className="topnav-inner">
         <div className="topnav-brand">
-          <span className="topnav-mark">A</span>
+          <img src={logoAkapi} alt="Logo AKAPI" className="topnav-mark" />
           <span className="topnav-name">AKAPI</span>
         </div>
 

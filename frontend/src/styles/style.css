@@ -274,3 +274,7 @@ footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:co
 
 .point-heading{ font-family:'Fraunces', serif; font-weight:600; color:var(--ink); font-size:1.6rem; margin:44px 0 18px; }
 .point-heading:first-of-type{ margin-top:0; }
+
+.num-list{ list-style:none; margin:0 0 44px; padding:0; display:flex; flex-direction:column; gap:22px; }
+.num-list li{ display:flex; gap:16px; align-items:flex-start; border-left:3px solid var(--brass); padding:6px 0 6px 26px; font-family:'Fraunces',serif; font-style:italic; font-weight:450; font-size:clamp(1.2rem,2.4vw,1.6rem); line-height:1.5; color:var(--ink); }
+.num-badge{ font-family:'IBM Plex Mono',monospace; font-style:normal; font-size:13px; color:var(--brass-bright); background:var(--ink); width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:4px; }
