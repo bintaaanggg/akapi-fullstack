@@ -11,12 +11,16 @@ function IndexCard({ person }) {
   return (
     <div className={`index-card${flipped ? ' flipped' : ''}`} onClick={() => setFlipped(f => !f)}>
       <div className="index-card-inner">
-        <div className="index-face">
-          <div className="index-avatar">
-            {person.photo ? <img src={person.photo} alt={person.name} /> : initials(person.name)}
+        <div className="index-face index-front">
+          <div className="index-photo">
+            {person.photo
+              ? <img src={person.photo} alt={person.name} />
+              : <span className="index-photo-fallback">{initials(person.name)}</span>}
           </div>
-          <div className="index-name">{person.name}</div>
-          <div className="index-role">{person.role}</div>
+          <div className="index-front-text">
+            <div className="index-name">{person.name}</div>
+            <div className="index-role">{person.role}</div>
+          </div>
           <div className="index-hint">Ketuk untuk detail →</div>
         </div>
         <div className="index-face index-back">
@@ -96,7 +100,6 @@ export default function Pengurus({ data }) {
       <div className="container">
         <div className="sec-head">
           <div>
-           
             <h2>Kartu Indeks Pengurus</h2>
           </div>
           <p>Pilih laci, lalu ketuk kartu untuk membaca riwayat singkat masing-masing pengurus.</p>
