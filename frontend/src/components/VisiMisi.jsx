@@ -1,15 +1,13 @@
 const MISI = [
-  'Mengembangkan kebijakan publik dari formulasi, implementasi, hingga evaluasi dengan penguasaan analitik data dan tata kelola digital.',
-  'Mencetak sumber daya aparatur yang profesional, terpercaya, unggul, dan kompeten dalam beradaptasi terhadap disrupsi teknologi.',
-  'Memperkuat inovasi formulasi dan implementasi kebijakan berbasis evidence-based policy making serta pemanfaatan kecerdasan buatan (AI).',
-  'Membangun kemitraan strategis melalui platform digital, transparansi anggaran, akuntabilitas kebijakan, dan inovasi riset berbasis teknologi.'
+  'Melaksanakan program-program peningkatan kompetensi sumber daya manusia dibidang kebijakan publik mencakup formulasi, implementasi dan evaluasi kebijakan. ',
+  'Melembagakan profesionalitas, terpercaya, unggul, dan kompeten bagi profesi dibidang kebijakan publik. ',
+  'Mengembangkan inovasi standar kompetensi dibidang analis kebijakan publik.',
 ];
 
 const TUJUAN = [
-  'Meningkatkan pengetahuan, sikap, dan keterampilan profesional analis kebijakan termasuk kapasitas data dan teknologi digital.',
-  'Mendorong kinerja dan profesionalisme Kepala Daerah, Aparatur Pemerintah, DPR/D, dan Lembaga/Instansi lain melalui rekomendasi model kebijakan.',
-  'Mengembangkan standar kerja bagi penguatan kompetensi sektor kebijakan publik berbasis bukti yang didukung teknologi analitik data.',
-  'Mendorong integrasi tata kelola digital dan keterbukaan data yang selaras dengan agenda perlindungan data pribadi dan keamanan siber.'
+  'Melaksanakan program peningkatan pengetahuan, sikap dan ketrampilan yang profesional sebagai analis kebijakan publik.',
+  'Melaksanakan pelembagaan karakter profesional, terpercaya, unggul, dan kompeten bagi profesi di bidang kebijakan publik. ',
+  'Melaksanakan pengembangan inovasi standar kompetensi di bidang kebijakan publik dan analis yang mencakup formulasi, implementasi dan evaluasi kebijakan.',
 ];
 
 export default function VisiMisi() {
@@ -25,7 +23,7 @@ export default function VisiMisi() {
 
         <div className="sub-label">Visi</div>
         <div className="visi-quote">
-          "Menjadi organisasi profesi terdepan berskala nasional dan internasional yang mampu mencetak tenaga profesional, terpercaya, unggul, dan kompeten di bidang analis kebijakan, yang adaptif terhadap transformasi digital dan berbasis data, guna memperkuat kualitas kebijakan publik Indonesia di era pemerintahan digital."
+         Menjadi organisasi profesi yang memiliki reputasi pada skala nasional dan internasional, serta mampu mengembangkan kompetensi analis kebijakan publik yang profesional, berakar pada nilai-nilai karakter Indonesia. 
         </div>
 
         <div className="sub-label">Misi</div>
@@ -43,7 +41,7 @@ export default function VisiMisi() {
         </div>
 
         <div className="sasaran-box">
-          <strong>Sasaran.</strong> Meningkatkan independensi dan netralitas, profesionalisme kinerja, integritas, kualitas pelayanan publik, pengawasan dan akuntabilitas — termasuk akuntabilitas digital dan transparansi anggaran berbasis dashboard publik — di lingkungan instansi pemerintah, akademisi, perusahaan, dan profesi/praktisi, guna mewujudkan tata kelola kebijakan yang inklusif, partisipatif, dan berbasis data.
+          <strong>Sasaran.</strong> Meningkatkan profesionalisme, independensi, netralitas dan integritas analis kebijakan dalam rangka  peningkatan kualitas pelayanan publik, pengawasan dan akuntabilitas di lingkungan instansi/lembaga pemerintah, swasta dan lembaga-lembaga nirlaba sebagai upaya peningkatan kesejahteraan masyarakat. 
         </div>
       </div>
     </section>
