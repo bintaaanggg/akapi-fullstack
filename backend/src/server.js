@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const pengurusRoutes = require('./routes/pengurus');
 const agendaRoutes = require('./routes/agenda');
 const galeriRoutes = require('./routes/galeri');
+const dewanPembinaRoutes = require('./routes/dewanpembina');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/pengurus', pengurusRoutes);
 app.use('/api/agenda', agendaRoutes);
 app.use('/api/galeri', galeriRoutes);
+app.use('/api/dewanpembina', dewanPembinaRoutes);
 
 app.use((req, res) => res.status(404).json({ message: 'Endpoint tidak ditemukan.' }));
 

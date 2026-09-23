@@ -7,9 +7,16 @@ const CATS = [
   { key: 'penasihat', label: 'Dewan Penasihat' }
 ];
 
+const DP_GROUPS = [
+  { key: 'institusi', label: 'Institusi Pembina' },
+  { key: 'pembina', label: 'Dewan Pembina' },
+  { key: 'pakar', label: 'Pakar Kebijakan' }
+];
+
 const emptyPengurusForm = { id: null, category: 'harian', name: '', role: '', note: '', photo: '' };
 const emptyAgendaForm = { id: null, day: '', month: '', title: '', meta: '' };
 const emptyGaleriForm = { id: null, caption: '', photo: '' };
+const emptyDpForm = { id: null, group_type: 'pembina', kategori: '', name: '', role: '' };
 
 function resizePhoto(file, size = 160) {
   return new Promise((resolve, reject) => {
@@ -33,7 +40,6 @@ function resizePhoto(file, size = 160) {
   });
 }
 
-// Galeri pakai ukuran lebih besar & tanpa crop persegi, biar foto kegiatan tidak terpotong aneh
 function resizeGaleriPhoto(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -66,17 +72,23 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
   const [pengurusData, setPengurusData] = useState({ harian: [], pengawas: [], penasihat: [] });
   const [agendaData, setAgendaData] = useState([]);
   const [galeriData, setGaleriData] = useState([]);
+  const [dpData, setDpData] = useState([]);
   const [activeCat, setActiveCat] = useState('harian');
+  const [dpActiveGroup, setDpActiveGroup] = useState('pembina');
   const [pForm, setPForm] = useState(emptyPengurusForm);
   const [aForm, setAForm] = useState(emptyAgendaForm);
   const [gForm, setGForm] = useState(emptyGaleriForm);
+  const [dpForm, setDpForm] = useState(emptyDpForm);
 
   const loadData = async () => {
     try {
-      const [pRes, aRes, gRes] = await Promise.all([api.get('/pengurus'), api.get('/agenda'), api.get('/galeri')]);
+      const [pRes, aRes, gRes, dpRes] = await Promise.all([
+        api.get('/pengurus'), api.get('/agenda'), api.get('/galeri'), api.get('/dewanpembina')
+      ]);
       setPengurusData(pRes.data);
       setAgendaData(aRes.data);
       setGaleriData(gRes.data);
+      setDpData(dpRes.data);
     } catch (err) {
       console.error(err);
     }
@@ -156,7 +168,6 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
 
   const editAgenda = (ev) => setAForm({ id: ev.id, day: ev.day, month: ev.month, title: ev.title, meta: ev.meta });
 
-  // ---- Galeri ----
   const onGaleriPhotoChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -168,14 +179,15 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
 
   const submitGaleri = async (e) => {
     e.preventDefault();
-    if (!gForm.photo) { alert('Pilih foto terlebih dahulu.'); return; }
+    if (!gForm.id && !gForm.photo) { alert('Pilih foto terlebih dahulu.'); return; }
     const payload = { caption: gForm.caption, photo: gForm.photo };
     try {
-      await api.post('/galeri', payload);
+      if (gForm.id) await api.put(`/galeri/${gForm.id}`, payload);
+      else await api.post('/galeri', payload);
       setGForm(emptyGaleriForm);
       refreshPublic();
     } catch (err) {
-      alert(err.response?.data?.message || 'Gagal menambahkan foto.');
+      alert(err.response?.data?.message || 'Gagal menyimpan foto.');
     }
   };
 
@@ -185,7 +197,32 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
     catch (err) { alert(err.response?.data?.message || 'Gagal menghapus.'); }
   };
 
+  const editGaleri = (g) => setGForm({ id: g.id, caption: g.caption || '', photo: g.photo });
+
+  // ---- Dewan Pembina ----
+  const submitDp = async (e) => {
+    e.preventDefault();
+    const payload = { group_type: dpForm.group_type, kategori: dpForm.kategori, name: dpForm.name, role: dpForm.role };
+    try {
+      if (dpForm.id) await api.put(`/dewanpembina/${dpForm.id}`, payload);
+      else await api.post('/dewanpembina', payload);
+      setDpForm({ ...emptyDpForm, group_type: dpActiveGroup });
+      refreshPublic();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Gagal menyimpan data.');
+    }
+  };
+
+  const deleteDp = async (id) => {
+    if (!confirm('Hapus data ini?')) return;
+    try { await api.delete(`/dewanpembina/${id}`); refreshPublic(); }
+    catch (err) { alert(err.response?.data?.message || 'Gagal menghapus.'); }
+  };
+
+  const editDp = (d) => setDpForm({ id: d.id, group_type: d.group_type, kategori: d.kategori || '', name: d.name, role: d.role || '' });
+
   const currentList = pengurusData[activeCat] || [];
+  const dpCurrentList = dpData.filter(d => d.group_type === dpActiveGroup);
 
   return (
     <div className={`admin-overlay${open ? ' open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -217,6 +254,7 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
               <button className={`admin-tab${tab === 'pengurus' ? ' active' : ''}`} onClick={() => setTab('pengurus')}>Pengurus</button>
               <button className={`admin-tab${tab === 'agenda' ? ' active' : ''}`} onClick={() => setTab('agenda')}>Agenda</button>
               <button className={`admin-tab${tab === 'galeri' ? ' active' : ''}`} onClick={() => setTab('galeri')}>Galeri</button>
+              <button className={`admin-tab${tab === 'dewanpembina' ? ' active' : ''}`} onClick={() => setTab('dewanpembina')}>Dewan Pembina</button>
               <button className="admin-tab" style={{ marginLeft: 'auto' }}
                 onClick={() => { localStorage.removeItem('akapi_admin_token'); setLoggedIn(false); }}>Keluar</button>
             </div>
@@ -308,6 +346,7 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
                     <div className="admin-row" key={g.id}>
                       <div className="txt"><b>{g.caption || '(tanpa caption)'}</b></div>
                       <div className="acts">
+                        <button className="btn btn-ghost btn-sm" onClick={() => editGaleri(g)}>Edit</button>
                         <button className="btn btn-danger btn-sm" onClick={() => deleteGaleri(g.id)}>Hapus</button>
                       </div>
                     </div>
@@ -327,7 +366,53 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
                     <input type="text" placeholder="Kegiatan AKAPI ..." value={gForm.caption} onChange={e => setGForm(f => ({ ...f, caption: e.target.value }))} />
                   </div>
                   <div className="admin-form-actions">
-                    <button type="submit" className="btn btn-solid btn-sm">Tambah Foto</button>
+                    <button type="submit" className="btn btn-solid btn-sm">{gForm.id ? 'Simpan Perubahan' : 'Tambah Foto'}</button>
+                    {gForm.id && <button type="button" className="btn btn-ghost btn-sm" onClick={() => setGForm(emptyGaleriForm)}>Batal Edit</button>}
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {tab === 'dewanpembina' && (
+              <div>
+                <div className="admin-cat-select">
+                  {DP_GROUPS.map(g => (
+                    <button key={g.key} className={dpActiveGroup === g.key ? 'active' : ''}
+                      onClick={() => { setDpActiveGroup(g.key); setDpForm({ ...emptyDpForm, group_type: g.key }); }}>{g.label}</button>
+                  ))}
+                </div>
+                <div className="admin-list">
+                  {dpCurrentList.length ? dpCurrentList.map(d => (
+                    <div className="admin-row" key={d.id}>
+                      <div className="txt">
+                        <b>{d.name}</b>
+                        <span>{d.kategori ? `${d.kategori} — ` : ''}{d.role || ''}</span>
+                      </div>
+                      <div className="acts">
+                        <button className="btn btn-ghost btn-sm" onClick={() => editDp(d)}>Edit</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteDp(d.id)}>Hapus</button>
+                      </div>
+                    </div>
+                  )) : <div className="drawer-empty">Belum ada data di kategori ini.</div>}
+                </div>
+                <form className="admin-form" onSubmit={submitDp}>
+                  {dpActiveGroup === 'pakar' && (
+                    <div className="field full"><label>Nama Kategori Pakar</label>
+                      <input type="text" placeholder="Pakar Kebijakan Poleksosbud" required
+                        value={dpForm.kategori} onChange={e => setDpForm(f => ({ ...f, kategori: e.target.value }))} />
+                    </div>
+                  )}
+                  <div className="field full"><label>Nama</label>
+                    <input type="text" required value={dpForm.name} onChange={e => setDpForm(f => ({ ...f, name: e.target.value }))} />
+                  </div>
+                  {dpActiveGroup !== 'institusi' && (
+                    <div className="field full"><label>Jabatan / Instansi</label>
+                      <input type="text" required value={dpForm.role} onChange={e => setDpForm(f => ({ ...f, role: e.target.value }))} />
+                    </div>
+                  )}
+                  <div className="admin-form-actions">
+                    <button type="submit" className="btn btn-solid btn-sm">{dpForm.id ? 'Simpan Perubahan' : 'Tambah'}</button>
+                    {dpForm.id && <button type="button" className="btn btn-ghost btn-sm" onClick={() => setDpForm({ ...emptyDpForm, group_type: dpActiveGroup })}>Batal Edit</button>}
                   </div>
                 </form>
               </div>
