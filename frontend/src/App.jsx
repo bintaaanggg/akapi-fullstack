@@ -42,7 +42,7 @@ export default function App() {
         <About />
         <VisiMisi />
         <Pengurus data={pengurusData} />
-        <DewanPembina />
+        <DewanPembina />  
         <Agenda data={agendaData} />
         <Pelatihan />
         <Gallery />
