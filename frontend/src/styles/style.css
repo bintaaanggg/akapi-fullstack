@@ -278,3 +278,10 @@ footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:co
 .gallery-lightbox img{ max-width:min(900px,90vw); max-height:75vh; object-fit:contain; border-radius:2px; cursor:default; }
 .gallery-lightbox-caption{ color:var(--paper-white); margin-top:16px; font-size:14px; }
 .gallery-close{ position:absolute; top:24px; right:28px; background:none; border:none; color:var(--paper-white); font-size:26px; cursor:pointer; }
+
+.pembina-table{ width:100%; border-collapse:collapse; margin-bottom:36px; font-size:14px; }
+.pembina-table tr{ border-top:1px solid var(--line); }
+.pembina-table tr:last-child{ border-bottom:1px solid var(--line); }
+.pembina-table td{ padding:12px 14px; color:var(--ink-soft); vertical-align:top; }
+.pembina-table .pembina-name{ color:var(--ink); font-weight:600; width:40%; }
+.pembina-table .pembina-role{ color:var(--ink-soft); }
