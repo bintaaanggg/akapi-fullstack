@@ -7,6 +7,7 @@ const pengurusRoutes = require('./routes/pengurus');
 const agendaRoutes = require('./routes/agenda');
 const galeriRoutes = require('./routes/galeri');
 
+
 const app = express();
 
 app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));

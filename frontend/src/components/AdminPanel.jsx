@@ -70,16 +70,45 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
   const [aForm, setAForm] = useState(emptyAgendaForm);
   const [gForm, setGForm] = useState(emptyGaleriForm);
 
-  const loadData = async () => {
-    try {
-      const [pRes, aRes, gRes] = await Promise.all([api.get('/pengurus'), api.get('/agenda'), api.get('/galeri')]);
-      setPengurusData(pRes.data);
-      setAgendaData(aRes.data);
-      setGaleriData(gRes.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+ const loadData = async () => {
+  // Pengurus
+  try {
+    const pRes = await api.get('/pengurus');
+
+    console.log('Data Pengurus:', pRes.data);
+
+    setPengurusData({
+      harian: pRes.data?.harian || [],
+      pengawas: pRes.data?.pengawas || [],
+      penasihat: pRes.data?.penasihat || []
+    });
+  } catch (err) {
+    console.error('Gagal mengambil data pengurus:', err);
+    setPengurusData({
+      harian: [],
+      pengawas: [],
+      penasihat: []
+    });
+  }
+
+  // Agenda
+  try {
+    const aRes = await api.get('/agenda');
+    setAgendaData(aRes.data || []);
+  } catch (err) {
+    console.error('Gagal mengambil data agenda:', err);
+    setAgendaData([]);
+  }
+
+  // Galeri
+  try {
+    const gRes = await api.get('/galeri');
+    setGaleriData(gRes.data || []);
+  } catch (err) {
+    console.error('Gagal mengambil data galeri:', err);
+    setGaleriData([]);
+  }
+};
 
   useEffect(() => {
     if (open && loggedIn) loadData();
