@@ -54,12 +54,13 @@ export default function VisiMisi() {
 
         <div className="sasaran-box">
           <strong>Sasaran.</strong>{' '}
+          <br />
           1. Meningkatkan independensi dan netralitas, profesionalisme
           kinerja/produktivitas kerja, integritas, kualitas pelayanan publik,
           pengawasan dan akuntabilitas, termasuk akuntabilitas digital dan
           transparansi anggaran di lingkungan instansi/lembaga pemerintah,
           perguruan tinggi, perusahaan dan lembaga profesi.
-          <br /><br />
+          <br />
           2. Mewujudkan tata kelola kebijakan publik yang inklusif,
           partisipatif, dan berkelanjutan dalam rangka peningkatan
           kesejahteraan masyarakat.
