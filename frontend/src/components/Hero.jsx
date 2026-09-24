@@ -57,7 +57,7 @@ export default function Hero() {
       <div className="container hero-grid">
         <div>
           <div className="eyebrow-plain"><span className="rule" /> Asosiasi Kebijakan Publik Indonesia, sejak 2020</div>
-          <h1>bintang<em>adaptif</em> dan berbasis data.</h1>
+          <h1>Merumuskan kebijakan yang<em>adaptif</em> dan berbasis data.</h1>
           <p className="lede">AKAPI menghimpun analis dan pakar kebijakan publik dari seluruh Indonesia untuk mendorong tata kelola kebijakan yang partisipatif, berbasis bukti, dan siap menghadapi era transformasi digital.</p>
           <div className="hero-cta">
             <a href="#pengurus" className="btn btn-solid">Lihat Pengurus</a>
