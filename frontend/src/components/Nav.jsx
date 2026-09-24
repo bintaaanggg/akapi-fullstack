@@ -7,6 +7,7 @@ const LINKS = [
   { id: 'pengurus', label: 'Pengurus' },
   { id: 'agenda', label: 'Agenda' },
   { id: 'pelatihan', label: 'Pelatihan' },
+  { id: 'galeri', label: 'Galeri' },
   { id: 'kontak', label: 'Kontak' }
 ];
 

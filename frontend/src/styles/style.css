@@ -266,3 +266,25 @@ footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:co
 .photo-picker input[type=file]{ font-size:12.5px; }
 
 .reveal{ opacity:1; }
+
+.gslide{ position:relative; }
+.gslide-frame{ position:relative; border:1px solid var(--line-strong); border-radius:3px; overflow:hidden; background:var(--paper-white); aspect-ratio:16/9; }
+.gslide-track{ display:flex; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1); }
+.gslide-item{ position:relative; min-width:100%; height:100%; }
+.gslide-item img{ width:100%; height:100%; object-fit:cover; display:block; }
+.gslide-caption{ position:absolute; left:0; right:0; bottom:0; padding:16px 22px; background:linear-gradient(0deg, rgba(18,35,67,0.85), transparent); color:var(--paper-white); font-size:14px; }
+.gslide-arrow{ position:absolute; top:50%; transform:translateY(-50%); background:var(--ink); color:var(--paper-white); border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:20px; z-index:2; display:flex; align-items:center; justify-content:center; transition:background .15s ease; }
+.gslide-arrow:hover{ background:var(--cloth); }
+.gslide-arrow.left{ left:16px; }
+.gslide-arrow.right{ right:16px; }
+.gslide-dots{ display:flex; gap:8px; justify-content:center; margin-top:16px; }
+.gslide-dot{ width:8px; height:8px; border-radius:50%; background:var(--line-strong); border:none; cursor:pointer; padding:0; }
+.gslide-dot.active{ background:var(--cloth); width:22px; border-radius:4px; transition:width .25s ease; }
+@media (max-width:640px){ .gslide-arrow{ width:34px; height:34px; font-size:16px; } }
+
+.pembina-table{ width:100%; border-collapse:collapse; margin-bottom:36px; font-size:14px; }
+.pembina-table tr{ border-top:1px solid var(--line); }
+.pembina-table tr:last-child{ border-bottom:1px solid var(--line); }
+.pembina-table td{ padding:12px 14px; color:var(--ink-soft); vertical-align:top; }
+.pembina-table .pembina-name{ color:var(--ink); font-weight:600; width:40%; }
+.pembina-table .pembina-role{ color:var(--ink-soft); }

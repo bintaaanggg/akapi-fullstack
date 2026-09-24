@@ -12,6 +12,8 @@ import Pelatihan from './components/Pelatihan.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
+import Gallery from './components/Gallery.jsx';
+import DewanPembina from './components/DewanPembina.jsx';
 
 export default function App() {
   const [pengurusData, setPengurusData] = useState({ harian: [], pengawas: [], penasihat: [] });
@@ -40,8 +42,10 @@ export default function App() {
         <About />
         <VisiMisi />
         <Pengurus data={pengurusData} />
+        <DewanPembina />  
         <Agenda data={agendaData} />
         <Pelatihan />
+        <Gallery />
         <Contact />
       </div>
       <Footer onOpenAdmin={() => setAdminOpen(true)} />

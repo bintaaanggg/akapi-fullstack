@@ -9,14 +9,14 @@ const CATS = [
 
 const emptyPengurusForm = { id: null, category: 'harian', name: '', role: '', note: '', photo: '' };
 const emptyAgendaForm = { id: null, day: '', month: '', title: '', meta: '' };
+const emptyGaleriForm = { id: null, caption: '', photo: '' };
 
-function resizePhoto(file) {
+function resizePhoto(file, size = 160) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
       img.onload = () => {
-        const size = 160;
         const canvas = document.createElement('canvas');
         canvas.width = size; canvas.height = size;
         const ctx = canvas.getContext('2d');
@@ -24,6 +24,29 @@ function resizePhoto(file) {
         const w = img.width * scale, h = img.height * scale;
         ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
         resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = reject;
+      img.src = ev.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function resizeGaleriPhoto(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = () => {
+        const maxW = 900;
+        const scale = Math.min(1, maxW / img.width);
+        const w = img.width * scale, h = img.height * scale;
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', 0.85));
       };
       img.onerror = reject;
       img.src = ev.target.result;
@@ -41,19 +64,51 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
 
   const [pengurusData, setPengurusData] = useState({ harian: [], pengawas: [], penasihat: [] });
   const [agendaData, setAgendaData] = useState([]);
+  const [galeriData, setGaleriData] = useState([]);
   const [activeCat, setActiveCat] = useState('harian');
   const [pForm, setPForm] = useState(emptyPengurusForm);
   const [aForm, setAForm] = useState(emptyAgendaForm);
+  const [gForm, setGForm] = useState(emptyGaleriForm);
 
-  const loadData = async () => {
-    try {
-      const [pRes, aRes] = await Promise.all([api.get('/pengurus'), api.get('/agenda')]);
-      setPengurusData(pRes.data);
-      setAgendaData(aRes.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+ const loadData = async () => {
+  // Pengurus
+  try {
+    const pRes = await api.get('/pengurus');
+
+    console.log('Data Pengurus:', pRes.data);
+
+    setPengurusData({
+      harian: pRes.data?.harian || [],
+      pengawas: pRes.data?.pengawas || [],
+      penasihat: pRes.data?.penasihat || []
+    });
+  } catch (err) {
+    console.error('Gagal mengambil data pengurus:', err);
+    setPengurusData({
+      harian: [],
+      pengawas: [],
+      penasihat: []
+    });
+  }
+
+  // Agenda
+  try {
+    const aRes = await api.get('/agenda');
+    setAgendaData(aRes.data || []);
+  } catch (err) {
+    console.error('Gagal mengambil data agenda:', err);
+    setAgendaData([]);
+  }
+
+  // Galeri
+  try {
+    const gRes = await api.get('/galeri');
+    setGaleriData(gRes.data || []);
+  } catch (err) {
+    console.error('Gagal mengambil data galeri:', err);
+    setGaleriData([]);
+  }
+};
 
   useEffect(() => {
     if (open && loggedIn) loadData();
@@ -129,6 +184,37 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
 
   const editAgenda = (ev) => setAForm({ id: ev.id, day: ev.day, month: ev.month, title: ev.title, meta: ev.meta });
 
+  const onGaleriPhotoChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const dataUrl = await resizeGaleriPhoto(file);
+      setGForm(f => ({ ...f, photo: dataUrl }));
+    } catch { /* ignore */ }
+  };
+
+  const submitGaleri = async (e) => {
+    e.preventDefault();
+    if (!gForm.id && !gForm.photo) { alert('Pilih foto terlebih dahulu.'); return; }
+    const payload = { caption: gForm.caption, photo: gForm.photo };
+    try {
+      if (gForm.id) await api.put(`/galeri/${gForm.id}`, payload);
+      else await api.post('/galeri', payload);
+      setGForm(emptyGaleriForm);
+      refreshPublic();
+    } catch (err) {
+      alert(err.response?.data?.message || 'Gagal menyimpan foto.');
+    }
+  };
+
+  const deleteGaleri = async (id) => {
+    if (!confirm('Hapus foto ini?')) return;
+    try { await api.delete(`/galeri/${id}`); refreshPublic(); }
+    catch (err) { alert(err.response?.data?.message || 'Gagal menghapus.'); }
+  };
+
+  const editGaleri = (g) => setGForm({ id: g.id, caption: g.caption || '', photo: g.photo });
+
   const currentList = pengurusData[activeCat] || [];
 
   return (
@@ -160,6 +246,7 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
             <div className="admin-tabs">
               <button className={`admin-tab${tab === 'pengurus' ? ' active' : ''}`} onClick={() => setTab('pengurus')}>Pengurus</button>
               <button className={`admin-tab${tab === 'agenda' ? ' active' : ''}`} onClick={() => setTab('agenda')}>Agenda</button>
+              <button className={`admin-tab${tab === 'galeri' ? ' active' : ''}`} onClick={() => setTab('galeri')}>Galeri</button>
               <button className="admin-tab" style={{ marginLeft: 'auto' }}
                 onClick={() => { localStorage.removeItem('akapi_admin_token'); setLoggedIn(false); }}>Keluar</button>
             </div>
@@ -239,6 +326,40 @@ export default function AdminPanel({ open, onClose, onDataChanged }) {
                   <div className="admin-form-actions">
                     <button type="submit" className="btn btn-solid btn-sm">Simpan</button>
                     <button type="button" className="btn btn-ghost btn-sm" onClick={() => setAForm(emptyAgendaForm)}>Batal Edit</button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {tab === 'galeri' && (
+              <div>
+                <div className="admin-list">
+                  {galeriData.length ? galeriData.map(g => (
+                    <div className="admin-row" key={g.id}>
+                      <div className="txt"><b>{g.caption || '(tanpa caption)'}</b></div>
+                      <div className="acts">
+                        <button className="btn btn-ghost btn-sm" onClick={() => editGaleri(g)}>Edit</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteGaleri(g.id)}>Hapus</button>
+                      </div>
+                    </div>
+                  )) : <div className="drawer-empty">Belum ada foto galeri.</div>}
+                </div>
+                <form className="admin-form" onSubmit={submitGaleri}>
+                  <div className="field full">
+                    <label>Foto</label>
+                    <div className="photo-picker">
+                      <div className="photo-preview">
+                        {gForm.photo ? <img src={gForm.photo} alt="" /> : 'Tanpa foto'}
+                      </div>
+                      <input type="file" accept="image/*" onChange={onGaleriPhotoChange} />
+                    </div>
+                  </div>
+                  <div className="field full"><label>Caption</label>
+                    <input type="text" placeholder="Kegiatan AKAPI ..." value={gForm.caption} onChange={e => setGForm(f => ({ ...f, caption: e.target.value }))} />
+                  </div>
+                  <div className="admin-form-actions">
+                    <button type="submit" className="btn btn-solid btn-sm">{gForm.id ? 'Simpan Perubahan' : 'Tambah Foto'}</button>
+                    {gForm.id && <button type="button" className="btn btn-ghost btn-sm" onClick={() => setGForm(emptyGaleriForm)}>Batal Edit</button>}
                   </div>
                 </form>
               </div>
