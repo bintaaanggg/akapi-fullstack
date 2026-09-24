@@ -1,13 +1,15 @@
 const MISI = [
-  'Melaksanakan program-program peningkatan kompetensi sumber daya manusia dibidang kebijakan publik mencakup formulasi, implementasi dan evaluasi kebijakan. ',
-  'Melembagakan profesionalitas, terpercaya, unggul, dan kompeten bagi profesi dibidang kebijakan publik. ',
-  'Mengembangkan inovasi standar kompetensi dibidang analis kebijakan publik.',
+  'Meningkatkan kompetensi sumber daya manusia di bidang analis kebijakan publik yang mencakup ranah formulasi, implementasi dan evaluasi kebijakan.',
+  'Meningkatkan profesionalisme dalam kinerja tata kelola pemerintahan untuk mencetak sumber daya manusia yang terpercaya, unggul, dan kompeten di bidang kebijakan publik yang mampu beradaptasi dengan disrupsi teknologi dan tuntutan akuntabilitas digital.',
+  'Meningkatkan dan mengembangkan inovasi standar kompetensi kerja di bidang keahlian analis kebijakan dalam ranah formulasi, implementasi dan evaluasi kebijakan publik berbasis bukti (evidence based) dan pemanfaatan kecerdasan buatan atau Artificial Intelegent untuk mendukung prediksi dampak kebijakan.',
+  'Mendorong adaptabilitas dalam perumusan kebijakan publik melalui kemitraan strategis dengan lembaga pemerintah, akademisi, dan sektor swasta, berbasis platform digital, guna meningkatkan transparansi anggaran, serta akuntabilitas kebijakan dan inovasi riset kebijakan.'
 ];
 
 const TUJUAN = [
-  'Melaksanakan program peningkatan pengetahuan, sikap dan ketrampilan yang profesional sebagai analis kebijakan publik.',
-  'Melaksanakan pelembagaan karakter profesional, terpercaya, unggul, dan kompeten bagi profesi di bidang kebijakan publik. ',
-  'Melaksanakan pengembangan inovasi standar kompetensi di bidang kebijakan publik dan analis yang mencakup formulasi, implementasi dan evaluasi kebijakan.',
+  'Melaksanakan program dan kegiatan dalam rangka meningkatkan pengetahuan, sikap dan keterampilan yang profesional di bidang analis kebijakan',
+  'Merekomendasikan model kebijakan yang efektif untuk peningkatan kinerja dan profesionalisme Kepala Pemerintah Pusat dan Daerah, DPR RI dan DPRD serta Lembaga/Instansi Pemerintah lainnya',
+  'Meningkatkan dan mengembangkan inovasi standar kompetensi kerja di lingkungan Pemerintah Pusat dan Daerah, serta Lembaga/Instansi lainnya',
+  'Mendorong integrasi prinsip tata kelola digital (digital governance) dalam setiap tahapan siklus kebijakan publik yang sejalan dengan agenda pembangunan nasional'
 ];
 
 export default function VisiMisi() {
@@ -18,31 +20,56 @@ export default function VisiMisi() {
           <div>
             <h2>Visi &amp; Misi</h2>
           </div>
-          <p>Arah dan agenda strategis AKAPI dalam memperkuat kebijakan publik Indonesia.</p>
+
+          <p>
+            Arah dan agenda strategis AKAPI dalam memperkuat kebijakan publik Indonesia.
+          </p>
         </div>
 
         <div className="sub-label">Visi</div>
+
         <div className="visi-quote">
-         Menjadi organisasi profesi yang memiliki reputasi pada skala nasional dan internasional, serta mampu mengembangkan kompetensi analis kebijakan publik yang profesional, berakar pada nilai-nilai karakter Indonesia. 
+          "Menjadi organisasi profesi terdepan berskala nasional dan internasional yang unggul, dan kompeten di bidang kebijakan publik, di era pemerintahan digital."
         </div>
 
         <div className="sub-label">Misi</div>
+
         <div className="point-block">
           <ul>
-            {MISI.map((item, i) => <li key={i}>{item}</li>)}
+            {MISI.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ul>
         </div>
 
         <div className="sub-label">Tujuan</div>
+
         <div className="point-block">
           <ul>
-            {TUJUAN.map((item, i) => <li key={i}>{item}</li>)}
+            {TUJUAN.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ul>
         </div>
 
         <div className="sasaran-box">
-          <strong>Sasaran.</strong> Meningkatkan profesionalisme, independensi, netralitas dan integritas analis kebijakan dalam rangka  peningkatan kualitas pelayanan publik, pengawasan dan akuntabilitas di lingkungan instansi/lembaga pemerintah, swasta dan lembaga-lembaga nirlaba sebagai upaya peningkatan kesejahteraan masyarakat. 
-        </div>
+  <strong>Sasaran.</strong>
+
+  <ol>
+    <li>
+      Meningkatkan independensi dan netralitas, profesionalisme
+      kinerja/produktivitas kerja, integritas, kualitas pelayanan publik,
+      pengawasan dan akuntabilitas, termasuk akuntabilitas digital dan
+      transparansi anggaran di lingkungan instansi/lembaga pemerintah,
+      perguruan tinggi, perusahaan dan lembaga profesi.
+    </li>
+
+    <li>
+      Mewujudkan tata kelola kebijakan publik yang inklusif, partisipatif,
+      dan berkelanjutan dalam rangka peningkatan kesejahteraan masyarakat.
+    </li>
+  </ol>
+</div>
       </div>
     </section>
   );

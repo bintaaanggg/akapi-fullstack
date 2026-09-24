@@ -1,4 +1,4 @@
-;export default function Pelatihan() {
+export default function Pelatihan() {
   return (
     <section className="sec" id="pelatihan">
       <div className="container">
