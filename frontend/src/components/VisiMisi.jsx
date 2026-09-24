@@ -60,7 +60,8 @@ export default function VisiMisi() {
           pengawasan dan akuntabilitas, termasuk akuntabilitas digital dan
           transparansi anggaran di lingkungan instansi/lembaga pemerintah,
           perguruan tinggi, perusahaan dan lembaga profesi.
-          <br /> 
+          <br />  
+          <br />
           2. Mewujudkan tata kelola kebijakan publik yang inklusif,
           partisipatif, dan berkelanjutan dalam rangka peningkatan
           kesejahteraan masyarakat.
