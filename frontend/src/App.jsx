@@ -8,7 +8,6 @@ import About from './components/About.jsx';
 import VisiMisi from './components/VisiMisi.jsx';
 import Pengurus from './components/Pengurus.jsx';
 import Agenda from './components/Agenda.jsx';
-import Pelatihan from './components/Pelatihan.jsx'; 
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
@@ -44,7 +43,6 @@ export default function App() {
         <Pengurus data={pengurusData} />
         <DewanPembina />  
         <Agenda data={agendaData} />
-        <Pelatihan />
         <Gallery />
         <Contact />
       </div>
