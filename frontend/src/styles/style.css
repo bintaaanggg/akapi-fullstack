@@ -265,6 +265,22 @@ footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:co
 .photo-preview img{ width:100%; height:100%; object-fit:cover; }
 .photo-picker input[type=file]{ font-size:12.5px; }
 
+/* ---- galeri ---- */
+.gslide{ position:relative; margin-bottom:20px; }
+.gslide-frame{ overflow:hidden; border:1px solid var(--line-strong); border-radius:3px; background:var(--paper-white); aspect-ratio:16/9; max-height:480px; }
+.gslide-track{ display:flex; height:100%; transition:transform .5s ease; }
+.gslide-item{ min-width:100%; height:100%; position:relative; flex-shrink:0; }
+.gslide-item img{ width:100%; height:100%; object-fit:cover; display:block; }
+.gslide-caption{ position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(18,35,67,0.85)); color:#fff; padding:28px 20px 14px; font-size:14px; }
+.gslide-arrow{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(18,35,67,0.75); color:#fff; border:none; width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:18px; z-index:2; display:flex; align-items:center; justify-content:center; transition:background .15s ease; }
+.gslide-arrow:hover{ background:var(--ink); }
+.gslide-arrow.left{ left:14px; }
+.gslide-arrow.right{ right:14px; }
+.gslide-dots{ display:flex; gap:8px; justify-content:center; margin-top:14px; }
+.gslide-dot{ width:8px; height:8px; border-radius:50%; background:var(--line-strong); border:none; cursor:pointer; padding:0; }
+.gslide-dot.active{ background:var(--cloth); width:22px; border-radius:4px; transition:width .25s ease; }
+@media (max-width:640px){ .gslide-frame{ aspect-ratio:4/3; } }
+
 .reveal{ opacity:1; }
 
 .gslide{ position:relative; }
