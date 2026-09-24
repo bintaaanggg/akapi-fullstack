@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 const LINKS = [
   { id: 'beranda', label: 'Beranda' },
-  { id: 'tentangkami', label: 'Tentang Kami' },
+  { id: 'tentang-kami', label: 'Tentang Kami' },
   { id: 'visimisi', label: 'Visi & Misi' },
-  { id: 'strukturorganisasi', label: 'Struktur Organisasi' },
+  { id: 'struktur-organisasi', label: 'Struktur Organisasi' },
   { id: 'agenda', label: 'Agenda' },
   { id: 'galeri', label: 'Galeri' },
   { id: 'kontak', label: 'Kontak' }

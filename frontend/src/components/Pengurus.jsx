@@ -96,7 +96,7 @@ export default function Pengurus({ data }) {
   const list = data[activeCat] || [];
 
   return (
-    <section className="sec" id="pengurus">
+    <section className="sec" id="struktur-organisasi">
       <div className="container">
         <div className="sec-head">
           <div>

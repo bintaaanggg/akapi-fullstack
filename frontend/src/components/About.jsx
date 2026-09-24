@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="sec" id="tentang">
+    <section className="sec" id="tentang-kami">
       <div className="container">
         <div className="sec-head">
           <div>
