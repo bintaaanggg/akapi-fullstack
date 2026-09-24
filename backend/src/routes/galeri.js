@@ -20,18 +20,36 @@ router.get('/', async (req, res) => {
 // POST /api/galeri (admin)
 router.post('/', requireAdmin, async (req, res) => {
   const { caption, photo } = req.body;
-  if (!caption || !photo) {
-    return res.status(400).json({ message: 'Caption dan foto wajib diisi.' });
+  if (!photo) {
+    return res.status(400).json({ message: 'Foto wajib diisi.' });
   }
   try {
     const [result] = await pool.query(
       'INSERT INTO galeri (caption, photo) VALUES (?, ?)',
-      [caption, photo]
+      [caption || '', photo]
     );
     res.status(201).json({ id: result.insertId });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Gagal menambahkan foto.' });
+  }
+});
+
+// PUT /api/galeri/:id (admin)
+router.put('/:id', requireAdmin, async (req, res) => {
+  const { caption, photo } = req.body;
+  if (!photo) {
+    return res.status(400).json({ message: 'Foto wajib diisi.' });
+  }
+  try {
+    await pool.query(
+      'UPDATE galeri SET caption=?, photo=? WHERE id=?',
+      [caption || '', photo, req.params.id]
+    );
+    res.json({ message: 'Foto diperbarui.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Gagal memperbarui foto.' });
   }
 });
 
@@ -42,7 +60,7 @@ router.delete('/:id', requireAdmin, async (req, res) => {
     res.json({ message: 'Foto dihapus.' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Gagal menghapus foto.' });
+    res.status(500).json({ message: 'Gagal menghapus.' });
   }
 });
 
