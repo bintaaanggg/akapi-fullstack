@@ -1,14 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import api from '../api.js';
 
-export default function Gallery() {
-  const [photos, setPhotos] = useState([]);
+export default function Gallery({ data }) {
+  const photos = data || [];
   const [idx, setIdx] = useState(0);
   const timerRef = useRef(null);
-
-  useEffect(() => {
-    api.get('/galeri').then(res => setPhotos(res.data)).catch(err => console.error(err));
-  }, []);
 
   const start = () => {
     stop();
@@ -39,7 +34,7 @@ export default function Gallery() {
           <div className="gslide" onMouseEnter={stop} onMouseLeave={start}>
             <div className="gslide-frame">
               <div className="gslide-track" style={{ transform: `translateX(-${idx * 100}%)` }}>
-                {photos.map((p, i) => (
+                {photos.map((p) => (
                   <div className="gslide-item" key={p.id}>
                     <img src={p.photo} alt={p.caption} />
                     {p.caption && <div className="gslide-caption">{p.caption}</div>}

@@ -17,13 +17,19 @@ import DewanPembina from './components/DewanPembina.jsx';
 export default function App() {
   const [pengurusData, setPengurusData] = useState({ harian: [], pengawas: [], penasihat: [] });
   const [agendaData, setAgendaData] = useState([]);
+  const [galeriData, setGaleriData] = useState([]);
   const [adminOpen, setAdminOpen] = useState(false);
 
   const loadPublicData = useCallback(async () => {
     try {
-      const [pRes, aRes] = await Promise.all([api.get('/pengurus'), api.get('/agenda')]);
+      const [pRes, aRes, gRes] = await Promise.all([
+        api.get('/pengurus'),
+        api.get('/agenda'),
+        api.get('/galeri')
+      ]);
       setPengurusData(pRes.data);
       setAgendaData(aRes.data);
+      setGaleriData(gRes.data);
     } catch (err) {
       console.error('Gagal memuat data dari backend:', err);
     }
@@ -41,9 +47,9 @@ export default function App() {
         <About />
         <VisiMisi />
         <Pengurus data={pengurusData} />
-        <DewanPembina />  
+        <DewanPembina />
         <Agenda data={agendaData} />
-        <Gallery />
+        <Gallery data={galeriData} />
         <Contact />
       </div>
       <Footer onOpenAdmin={() => setAdminOpen(true)} />
