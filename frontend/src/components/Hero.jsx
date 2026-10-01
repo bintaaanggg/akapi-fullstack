@@ -60,8 +60,8 @@ export default function Hero() {
           <h1>Merumuskan kebijakan yang <em>adaptif</em> dan berbasis data.</h1>
           <p className="lede">AKAPI beranggotakan para pakar kebijakan publik dari seluruh Indonesia untuk mendorong tata kelola kebijakan yang berkelanjutan dalam menghadapi era transformasi digital.</p>
           <div className="hero-cta">
-            <a href="#pengurus" className="btn btn-solid">Lihat Pengurus</a>
-            <a href="#tentang" className="btn btn-ghost">Tentang AKAPI</a>
+            <a href="#struktur-organisasi" className="btn btn-solid">Lihat Pengurus</a>
+            <a href="#tentang-kami" className="btn btn-ghost">Tentang AKAPI</a>
           </div>
         </div>
         <div>
